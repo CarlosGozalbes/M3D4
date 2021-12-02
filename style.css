@@ -1,0 +1,8 @@
+.on-the-cart {
+    border: 1px;
+    border-color: red;
+}
+
+.removed {
+    display: none;
+}
