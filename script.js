@@ -114,3 +114,18 @@ const buyItem = (node) => {
 document
   .querySelectorAll(".button delete")
   .addEventListener("click", removeCard); */
+
+  function search(query) {
+    if (query.length < 3) {
+      filteredBooks = books;
+      displayBooks();
+      return;
+    }
+
+    filteredBooks = books.filter((book) =>
+      book.title.toLowerCase().includes(query.toLowerCase())
+    );
+
+    console.log(filteredBooks);
+    displayBooks(filteredBooks);
+  }

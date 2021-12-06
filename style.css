@@ -9,12 +9,20 @@
 
 .card-body {
     height: 200px;
-    position: relative !important;
+    position: relative ;
   }
 
 
 
 #card-buttons {
-    position: absolute !important;
+    position: absolute ;
     bottom: 0px;
 }
+
+
+
+
+
+
+
+
