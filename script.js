@@ -1,22 +1,17 @@
 const loadBooks = () => {
-fetch("https://striveschool-api.herokuapp.com/books", {
-}) 
-.then(res => 
-     res.json()
-)
+  return fetch("https://striveschool-api.herokuapp.com/books", {})
+    .then((res) => res.json())
 
-.then(books => {
-    console.log(books)
+    .then((books) => {
+      console.log(books);
 
+      books.forEach((book) => {
+        const row = document.querySelector(".row");
+        const col = document.createElement("div");
 
-books.forEach(book => {
-
-const row = document.querySelector(".row")
-const col = document.createElement("div")
-
-col.classList.add("col-md-3")
-col.innerHTML = `
-                    <div class="card mb-4 shadow-sm">
+        col.classList.add("col-md-3");
+        col.innerHTML = `
+                    <div class="card h-100 mb-4 shadow-sm">
                     <img src="${book.img}" alt="..." class="card-img-top img-fluid" style="width: 100%;
                     height: 15vw;
                     object-fit: cover;">
@@ -25,9 +20,9 @@ col.innerHTML = `
                     <p class="card-text">
                         ${book.title}
                     </p>
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div id="card-buttons" class="d-flex justify-content-between align-items-bottom">
                         <div class="btn-group">
-                        <button type="button shop" class="btn btn-sm btn-outline-secondary">
+                        <button type="button" class="shop btn btn-sm btn-outline-secondary">
                             Add to card
                         </button>
                         <button type="button delete" class="btn btn-sm btn-outline-secondary">
@@ -37,12 +32,12 @@ col.innerHTML = `
                     </div>
                     </div>
                     </div>
-                    `
-                    row.appendChild(col)
-})})
+                    `;
+        row.appendChild(col);
+      });
+    })
 
-
-/* const row = document.querySelector(".row")
+    /* const row = document.querySelector(".row")
 
                     for (let i = 0; i < books.length; i++) {
                         const book = books[i]
@@ -64,15 +59,26 @@ col.innerHTML = `
                         row.appendChild(col)
                     }
  */
-.catch (error => console.log(error))
-}
+    .catch((error) => console.log(error));
+};
 
-
-window.onload = loadBooks
-
+window.onload = () => {
+  loadBooks().then(() => {
+    const buttons =
+      document.querySelectorAll(
+        ".shop"
+      ); /* .addEventListener("click", (event)=> {buyItem(event.target)}); */
+    for (let i = 0; i < buttons.length; i++) {
+      const button = buttons[i];
+      button.addEventListener("click", (event) => {
+        buyItem(event.target);
+      });
+    }
+  });
+};
 /* window.onload = () => {
     document.querySelector(".search").addEventListener("click", loadBooks) */
-    /* let newCard = document.createElement("div")
+/* let newCard = document.createElement("div")
     newCard.classList.add("card")
     let newImage = document.createElement("img")
     newImage.src = "httppsaddsad"
@@ -93,21 +99,18 @@ function buyItem() {
     card.classList.add('on-the-cart');
 } */
 
-buyItem = () => {
-node.parentElement.parentElement.classList.add("on-the-cart")
-const li = document.createElement("li")
-li.innerHTML = `${book.title}`
-document.getElementById("list").appendChild(li);
-}
+const buyItem = (node) => {
+  /* node.parentElement.parentElement.classList.add("on-the-cart");
+  const li = document.createElement("li"); */
+  console.log("fdasfsd");
+  /* li.innerHTML = `${book.title}`; */
+  /* document.getElementById("list").appendChild(li); */
+};
 
-document.querySelectorAll(".button shop").addEventListener('click', buyItem)
+/* const removeCard = () => {
+  node.parentElement.parentElement.classlist.add("removed");
+};
 
-
-removeCard = () => {
-node.parentElement.parentElement.classlist.add("removed")
-}
-
-
-document.querySelectorAll(".button delete").addEventListener('click', removeCard)
-
-
+document
+  .querySelectorAll(".button delete")
+  .addEventListener("click", removeCard); */

@@ -6,3 +6,15 @@
 .removed {
     display: none;
 }
+
+.card-body {
+    height: 200px;
+    position: relative !important;
+  }
+
+
+
+#card-buttons {
+    position: absolute !important;
+    bottom: 0px;
+}
