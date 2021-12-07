@@ -1,4 +1,4 @@
-const shoppingCart = document.querySelector("#cart");
+const shoppingCart = document.querySelector("#cart-itemss");
 
 let books = [];
 
@@ -50,28 +50,7 @@ function displayBooks(_books = books) {
 }
    
 
-    /* const row = document.querySelector(".row")
-
-                    for (let i = 0; i < books.length; i++) {
-                        const book = books[i]
-
-                        const col = document.createElement("div")
-                        col.className = "col-3"
-                        // col.addEventListener("click", () => alert("you clicked the element number " + (i + 1)))
-
-                        col.innerHTML = `
-                    <div class="card">
-                        <img src=${book.img} class="card-img-top" alt=${book.title} image>
-                        <div class="card-body">
-                            <h5 class="card-title">${book.title}</h5>
-                            <p class="card-text">${book.category}</p>
-                            <a href="#" class="btn btn-primary">${book.price}</a>
-                        </div>
-                    </div>
-                    `
-                        row.appendChild(col)
-                    }
- */
+/* Show cart */
 
 
 (function(){
@@ -85,72 +64,12 @@ function displayBooks(_books = books) {
 
 
 
-/* 
-const showcart = () => {
-  const cartInfo = document.getElementById("cart-info")
-  const cart = document.getElementById("cart")
-  cartInfo.addEventListener("click", function(){
-    cart.classList.toogle("show-cart")
-    console.log("clickedcart")
-  })
-}
- */
 
 
-window.onload = () => {
-  loadBooks()/* .then(() => {
-    const buttons =
-      document.querySelectorAll(
-        ".shop"
-      ); */ /* .addEventListener("click", (event)=> {buyItem(event.target)}); */
-    /* for (let i = 0; i < buttons.length; i++) {
-      const button = buttons[i];
-      button.addEventListener("click", (event) => {
-        buyItem(event.target);
-      });
-    }
-  }); */
-};
-/* window.onload = () => {
-    document.querySelector(".search").addEventListener("click", loadBooks) */
-/* let newCard = document.createElement("div")
-    newCard.classList.add("card")
-    let newImage = document.createElement("img")
-    newImage.src = "httppsaddsad"
-    newImage.classList.add("card-img-top")
-    newCard.appendChild(newImage)
-    newCard.innerHTML += `<div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        `
-    document.querySelector(".album").appendChild(newCard) 
-}*/
+/* Search item */  
 
-/* const card = document.querySelector(".card")
 
-function buyItem() {
-    card.classList.add('on-the-cart');
-} */
-
-/* const buyItem = (node) => { */
-  /* node.parentElement.parentElement.classList.add("on-the-cart");
-  const li = document.createElement("li"); */
-  /* console.log("fdasfsd"); */
-  /* li.innerHTML = `${book.title}`; */
-  /* document.getElementById("list").appendChild(li); */
-/* }; */
-
-/* const removeCard = () => {
-  node.parentElement.parentElement.classlist.add("removed");
-};
-
-document
-  .querySelectorAll(".button delete")
-  .addEventListener("click", removeCard); */
-
-  function search(query) {
+function search(query) {
     if (query.length < 3) {
       filteredBooks = books;
       displayBooks();
@@ -164,37 +83,10 @@ document
     console.log(filteredBooks);
     displayBooks(filteredBooks);
   }
-
-
-  function deleteItem(asin) {
-    const index = shoppingCartList.findIndex((book) => book.asin === asin);
-
-    if (index !== -1) {
-      shoppingCartList.splice(index, 1);
-    }
-
-    refreshShoppingCart();
-  } 
  
- cart
- 
-  /* function search(query) {
-    if (query.length < 3) {
-      filteredBooks = books;
-      displayBooks();
-      return;
-    }
-
-    filteredBooks = books.filter((book) =>
-      book.title.toLowerCase().includes(query.toLowerCase())
-    );
-
-    console.log(filteredBooks);
-    displayBooks(filteredBooks);
-  } */
 
 
-  (function(){
+  /* (function(){
     const cartBtn = document.querySelectorAll('.shop')
     cartBtn.forEach(function(btn){
       btn.addEventListener('click',function(event){
@@ -205,8 +97,9 @@ document
 
       })
     })
-  })
+  }) */
 
+/* CART ADD-REMOVE */
 
   function addToCart(asin, element) {
     console.log(asin);
@@ -217,12 +110,24 @@ document
 
     refreshShoppingCart();
 
-    element.closest(".parent").classList.add("selected");
+    element.closest(".parent").classList.toggle("selected");
   }
 
-  function refreshShoppingCart() {
-    shoppingCart.innerHTML = "";
+  function deleteItem(asin) {
+    const index = shoppingCartList.findIndex((book) => book.asin === asin);
 
+    if (index !== -1) {
+      shoppingCartList.splice(index, 1);
+    }
+
+    refreshShoppingCart();
+  } 
+  
+  
+  function refreshShoppingCart() {
+    
+    shoppingCart.innerHTML = "";
+    
     shoppingCartList.forEach((book) => {
       shoppingCart.innerHTML += `  
 
@@ -243,3 +148,8 @@ document
       `;
     });
   }
+
+
+  window.onload = () => {
+  loadBooks()
+};
