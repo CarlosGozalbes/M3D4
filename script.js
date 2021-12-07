@@ -12,13 +12,15 @@ function loadBooks() {
     .then((_books) => {
       books = _books;
       console.log(books);
-      displayBooks();
+      displayBooks(books);
     })
     .catch((err) => console.error(err.message));
 }
-function displayBooks(_books = books) {
+function displayBooks(books) {
+  const row = document.querySelector(".row");
+  row.innerHTML = ""
+
       books.forEach((book) => {
-        const row = document.querySelector(".row");
         const col = document.createElement("div");
         col.classList.add("mb-3")
         col.classList.add("col-md-3");
@@ -69,10 +71,12 @@ function displayBooks(_books = books) {
 /* Search item */  
 
 
-function search(query) {
-    if (query.length < 3) {
+function search() {
+  let query = document.getElementById("input-field").value
+  console.log(query)
+  if (query.length < 3) {
       filteredBooks = books;
-      displayBooks();
+      displayBooks(books);
       return;
     }
 
