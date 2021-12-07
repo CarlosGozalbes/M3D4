@@ -1,14 +1,22 @@
-.on-the-cart {
-    border: 1px;
-    border-color: red;
+:root {
+    --mainPink: #ef7998;
+    --mainYellow: rgb(249, 228, 148);
+    --mainWhite: #fff;
+    --mainBlack: #000;
+    --yellowTrans: rgba(249, 228, 148, 0.5);
+    --mainGrey: rgb(238, 238, 238);
+  }
+
+.selected {
+    
+    border-color:green;
 }
 
-.removed {
-    display: none;
-}
+
+
 
 .card-body {
-    height: 200px;
+    height: 150px;
     position: relative ;
   }
 
@@ -16,11 +24,109 @@
 
 #card-buttons {
     position: absolute ;
-    bottom: 0px;
+    bottom: 20px;
+}
+
+.navbar {
+    background-color: #3f51b5;
 }
 
 
+/* cart info */
 
+.cart-info__icon {
+    color: #ffd37e;
+    cursor: pointer;
+  }
+  
+  .cart-info {
+    border: 0.1rem solid 	#ffd37e;
+    color:	#ffd37e;
+    border-radius: 0.25rem;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    background-color: 	#283593;
+  }
+  .cart-info:hover {
+    background: var(--mainPink);
+    border-color: var(--mainPink);
+    color: var(--mainWhite);
+  }
+  .cart-info:hover .cart-info__icon {
+    color: var(--mainWhite);
+  }
+
+  
+  /* card */
+  
+  .card:hover {
+      transform: scale(1.02);
+  }
+
+  .card {
+      margin-bottom: 5px;
+  }
+
+
+
+
+  /* cart */
+
+
+
+  .cart {
+    position: absolute;
+    min-height: 10rem;
+    background: #e8eaf6;
+    top:92px;
+    right:10px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.95;
+    width: 0;
+    overflow: hidden;
+    z-index: 4;
+  }
+  .show-cart {
+    width: 22rem;
+    padding: 2rem 1.5rem;
+    transform: rotateY(-360deg);
+  }
+  .cart-item {
+    transition: all 2s ease-in-out;
+  }
+  
+  /* end of cart */
+  /* cart item */
+  .cart-item-remove {
+    color: var(--mainPink);
+    transition: all .2s ease-in-out;
+  }
+  .cart-item-remove:hover {
+    transform: scale(1.1);
+    color: var(--mainBlack);
+  }
+  #cart-item-price {
+    font-size: 0.8rem;
+  }
+  /* cart item */
+  /* cart buttons */
+  .btn-pink {
+    color: var(--mainPink) !important;
+    border-color: var(--mainPink) !important;
+  }
+  .btn-black {
+    color: var(--mainBlack) !important;
+    border-color: var(--mainBlack) !important;
+  }
+  .btn-black:hover {
+    color: var(--mainPink) !important;
+    background: var(--mainBlack) !important;
+  }
+  .btn-pink:hover {
+    background: var(--mainPink) !important;
+    color: var(--mainBlack) !important;
+  }
+  /* end of cart buttons */
 
 
 
